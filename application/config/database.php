@@ -80,7 +80,7 @@ $db['default'] = array(
 	'password' => '',
 	'database' => 'jobeet',
 	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
+	'dbprefix' => 'cat_',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,

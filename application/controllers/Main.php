@@ -20,7 +20,9 @@ class Main extends CI_Controller {
 	 */
 	public function index()
 	{
-		$header_data = array('title' => 'Каталог сайтов');
+		$this->load->model('category');
+		$categories = $this->category->get_all_cats();
+		$header_data = array('title' => 'Каталог сайтов', 'cats' => $categories);
 
 		$this->load->helper('html');
 		$this->load->view('header', $header_data);
