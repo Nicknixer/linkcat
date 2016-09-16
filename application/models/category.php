@@ -11,6 +11,15 @@ class Category extends CI_Model {
 
     function get_all_cats(){
         $query = $this->db->get($this->table);
-        return $query->result_array();
+        $arr_return = $query->result_array();
+        $ret = array();
+        foreach ($arr_return as $row) {
+        	$this->db->where('category_id',$row['id']);
+        	$query = $this->db->get('sites');
+        	$ret[] = array('id' => $row['id'], 'name' => $row['name'], 'count' => $query->num_rows());
+
+        }
+        return $ret;
+
     }
 }
