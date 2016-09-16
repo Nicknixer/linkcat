@@ -56,6 +56,7 @@ nav img {
 
 .content {
 	width: 740px;
+	min-height: 400px;
 	margin: 0 auto;
 	padding-bottom: 30px;
 	background-color: #fff;
@@ -165,4 +166,43 @@ footer {
 .bottom-text {
 	font-size: 12px;
 	float:left;
+}
+.title-top {
+	width: 740px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 30px;
+}
+.title-top h1 {
+	margin: 0;
+	padding: 0;
+	color: #0e4d66;
+	font-size: 16px;
+}
+.left-side-bar {
+	width: 200px;
+	min-height: 100px;
+	float:left;
+	margin: 0 auto;
+	color: #0e4d66;
+}
+.left-side-menu {
+	margin: 0;
+	padding: 5px;
+	color: #fff;
+	background-color: #0e1e33;
+}
+.left-side-items {
+	margin: 0;
+	padding-left: 5px;
+	padding-top: 2px;
+	color: #000;
+	background-color: #fff;
+	border-bottom: #0e1e33 solid 1px;
+}
+.page {
+	width:500px;
+	margin-left: 10px;
+	min-height: 300px;
+	float: left;
 }

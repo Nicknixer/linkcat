@@ -20,3 +20,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	</nav>
 	<div class="content">
+	<div class="title-top"><h1><?php echo $title; ?></h1></div>
+	<div class="left-side-bar">
+		<div class="left-side-menu">Категории сайтов:</div>
+		<div class="left-side-items">Прочее</div>
+		<div class="left-side-items">Прочее</div>
+		<div class="left-side-items">Прочее</div>
+		<div class="left-side-items">Прочее</div>
+		<div class="left-side-items">Прочее</div>
+	</div>
+	<div class="page">
