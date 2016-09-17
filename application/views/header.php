@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="left-side-bar">
 		<div class="left-side-menu">Категории сайтов:</div>
 		<?php foreach ($cats as $cat) {
-			echo '<div class="left-side-items">'.$cat['name'].' ('.$cat['count'].')</div>';
+			echo '<div class="left-side-items"><a href="/cat/show/'.$cat['id'].'">'.$cat['name'].'</a> ('.$cat['count'].')</div>';
 		} ?>
 	</div>
 	<div class="page">
