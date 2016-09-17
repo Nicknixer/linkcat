@@ -13,13 +13,15 @@ class Cat extends CI_Controller {
 			redirect('/');
 		}
 		$this->load->model('category');
+		$this->load->model('site');
 		$categories = $this->category->get_all_cats();
 		$current_category = 0;
-		$header_data = array('title' => 'Категогория: '.$this->category->get_name_of_category($id_of_category), 'cats' => $categories);
+		$header_data = array('title' => 'Категория: '.$this->category->get_name_of_category($id_of_category), 'cats' => $categories);
 
+		$data = array('sites' => $this->site->get_all_moderated_sites_in_category($id_of_category));
 		$this->load->helper('html');
 		$this->load->view('header', $header_data);
-		$this->load->view('index');
+		$this->load->view('show_category',$data);
 		$this->load->view('footer');
 	}
 }

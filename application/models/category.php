@@ -13,10 +13,10 @@ class Category extends CI_Model {
         $query = $this->db->get($this->table);
         $arr_return = $query->result_array();
         $ret = array();
+        $this->load->model('site');
         foreach ($arr_return as $row) {
-        	$this->db->where('category_id',$row['id']);
-        	$query = $this->db->get('sites');
-        	$ret[] = array('id' => $row['id'], 'name' => $row['name'], 'count' => $query->num_rows());
+            $sites = $this->site->count_sites_in_category($row['id']);
+        	$ret[] = array('id' => $row['id'], 'name' => $row['name'], 'count' => $sites);
 
         }
         return $ret;
