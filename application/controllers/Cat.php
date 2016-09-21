@@ -24,4 +24,11 @@ class Cat extends CI_Controller {
 		$this->load->view('show_category',$data);
 		$this->load->view('footer');
 	}
+	public function go($id_of_site)
+    {
+        $this->load->model('site');
+        $this->site->go($id_of_site);
+
+
+    }
 }

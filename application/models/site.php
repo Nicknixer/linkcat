@@ -44,4 +44,31 @@ class Site extends CI_Model {
         $result = $query->result_array();
         return $result[0];
     }
+    public function is_exist($id)
+    {
+        $this->db->where('id',$id);
+        $query = $this->db->get($this->table);
+        if($query->num_rows() == 0){
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    public function go($id = -1)
+    {
+        if($this->is_exist($id))
+        {
+            $passes = $this->get_site($id)['passes'];
+            $this->db->where('id',$id);
+            $this->db->update($this->table,array('passes' => ++$passes ));
+
+            redirect($this->get_site($id)['url']);
+        }
+        else
+        {
+            redirect('/');
+        }
+    }
 }
