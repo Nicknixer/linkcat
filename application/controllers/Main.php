@@ -10,6 +10,7 @@ class Main extends CI_Controller {
 		$categories = $this->category->get_all_cats();
 		$header_data = array('title' => 'Каталог сайтов', 'cats' => $categories);
 
+
 		$this->load->helper('html');
 		$this->load->view('header', $header_data);
 		$this->load->view('index');
