@@ -4,19 +4,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="site-block">
     <div class="title-site"><b>Добавление сайта</b></div>
-    <?php echo form_open('yoursite/add'); ?>
+    <?php echo form_open('/add'); ?>
     <div class="info-site">
+        <?php echo validation_errors(); ?>
         <table>
             <tr>
                 <td><b>Название:</b></td>
-                <td><input type="text" name="title" minlength="12" maxlength="60" required autofocus/></td>
+                <td><input type="text" name="title" minlength="12" maxlength="60" value="<?php echo set_value('title'); ?>" required autofocus/></td>
             </tr>
             <tr>
                 <td>
-                    <b>Адрес:</b>
+                    <b>Адрес сайта(URL):</b>
                 </td>
                 <td>
-                    <input type="url" name="title" value="http://" required/>
+                    <input type="url" name="url" value="<?php echo set_value('url'); ?>" required/>
                 </td>
             </tr>
             <tr>
@@ -38,7 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <b>Описание:</b>
                 </td>
                 <td>
-                    <textarea name="description" rows="4" cols="30" minlength="50" maxlength="600" placeholder="Как можно подробнее опишите ваш сайт" required></textarea>
+                    <textarea name="description" rows="4" cols="30" minlength="50" maxlength="600" placeholder="Как можно подробнее опишите ваш сайт" required><?php echo set_value('description'); ?></textarea>
                 </td>
             </tr>
             <tr>

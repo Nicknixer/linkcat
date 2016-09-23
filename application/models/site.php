@@ -56,6 +56,20 @@ class Site extends CI_Model {
             return true;
         }
     }
+    public function add($title,$url,$description,$category_id)
+    {
+        $data = array(
+            'title' => $title,
+            'url' => $url,
+            'description' => $description,
+            'category_id' => $category_id,
+            'date' => date('Y-m-d'),
+            'is_moderated' => 0,
+            'passes' => 0
+        );
+        $this->db->insert($this->table, $data);
+        return $this->db->insert_id();
+    }
     public function go($id = -1)
     {
         if($this->is_exist($id))
