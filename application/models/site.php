@@ -22,7 +22,14 @@ class Site extends CI_Model {
     	$this->db->where('category_id',$id_of_category);
         $query = $this->db->get($this->table);
         return $query->result_array();
-    }    
+    }
+    function get_last_not_moderated_sites()
+    {
+        $this->db->where('is_moderated',0);
+        $this->db->limit(0,10);
+        $query = $this->db->get($this->table);
+        return $query->result_array();
+    }
     function get_all_moderated_sites_in_category($id_of_category){
     	$this->db->where('category_id',$id_of_category);
     	$this->db->where('is_moderated',1);
@@ -84,5 +91,11 @@ class Site extends CI_Model {
         {
             redirect('/');
         }
+    }
+    public function not_moderated()
+    {
+        $this->db->where('is_moderated',0);
+        $query = $this->db->get($this->table);
+        return $query->num_rows();
     }
 }
