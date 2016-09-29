@@ -23,6 +23,13 @@ class Site extends CI_Model {
         $query = $this->db->get($this->table);
         return $query->result_array();
     }
+    function get_last_sites($num)
+    {
+        $this->db->where('is_moderated',1);
+        $this->db->limit(0,$num);
+        $query = $this->db->get($this->table);
+        return $query->result_array();
+    }
     function get_last_not_moderated_sites()
     {
         $this->db->where('is_moderated',0);
