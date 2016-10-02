@@ -20,9 +20,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </nav>
 <div class="content">
-    <div class="title-top"><h1><?php echo $title; ?></h1></div>
+    <div class="title-top"><h1><a href="/admin/panel">Панель администратора</a> - <?php echo $title; ?></h1></div>
     <div class="left-side-bar">
         <div class="left-side-menu">Меню:</div>
-        <div class="left-side-items"><a href="">Ожидают проверки </a>(<?php echo $new; ?>)</div>
+        <div class="left-side-items"><a href="/admin/panel">Ожидают проверки </a>(<?php echo $new; ?>)</div>
     </div>
     <div class="page">
