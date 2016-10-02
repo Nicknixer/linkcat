@@ -85,6 +85,19 @@ class Site extends CI_Model {
         $this->db->insert($this->table, $data);
         return $this->db->insert_id();
     }
+
+    public function edit($id,$title,$url,$description,$category_id)
+    {
+        $data = array(
+            'title' => $title,
+            'url' => $url,
+            'description' => $description,
+            'category_id' => $category_id,
+        );
+        $this->db->where('id', $id);
+        $this->db->update($this->table,$data);
+    }
+
     public function go($id = -1)
     {
         if($this->is_exist($id))
@@ -106,7 +119,11 @@ class Site extends CI_Model {
         $this->db->where('id',$id);
         $this->db->update($this->table,array('is_moderated' => 1));
     }
-
+    public function delete($id)
+    {
+        $this->db->where('id',$id);
+        $this->db->delete($this->table);
+    }
     public function not_moderated()
     {
         $this->db->where('is_moderated',0);

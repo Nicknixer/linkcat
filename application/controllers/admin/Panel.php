@@ -31,5 +31,13 @@ class Panel extends CI_Controller {
         $this->site->allow($id);
         redirect('/admin/panel');
     }
+    public function delete($id)
+    {
+        $this->for_admin();
+
+        $this->load->model('site');
+        $this->site->delete($id);
+        redirect('/admin/panel');
+    }
 
 }
