@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</div>
 	<footer>
 		<div class="bottom-phone">
-			<span class="phone">&copy;Белый каталог сайтов</span>
+			&copy; "BelCat" Все права защищены.
 		</div>
 		<div class="bottom-copy">
 			<div class="bottom-logo"><img src="/img/logo.png" width="30px" height="30px" align="middle"/></div>
