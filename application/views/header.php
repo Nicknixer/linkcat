@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title><?php echo $title; ?></title>
+	<title>Каталог сайтов | <?php echo $title; ?></title>
 	<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
 	<link rel="stylesheet" href="/libs/style.css">
 </head>
@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	</nav>
 	<div class="content">
-	<div class="title-top"><h1><?php echo $title; ?></h1></div>
+	<div class="title-top"><h1><a href="/">Каталог сайтов</a> - <?php echo $title; ?></h1></div>
 	<div class="left-side-bar">
 		<div class="left-side-menu">Категории</div>
 		<?php foreach ($cats as $cat) {

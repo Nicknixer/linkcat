@@ -13,7 +13,7 @@ class Cat extends CI_Controller {
 			redirect('/');
 		}
 		$categories = $this->category->get_all_cats();
-		$header_data = array('title' => 'Категория: '.$this->category->get_name_of_category($id_of_category), 'cats' => $categories);
+		$header_data = array('title' => 'Категории - '.$this->category->get_name_of_category($id_of_category), 'cats' => $categories);
 
 		$data = array('sites' => $this->site->get_all_moderated_sites_in_category($id_of_category),
             'is_admin' => $this->session->userdata('admin'));

@@ -34,6 +34,7 @@ class Site extends CI_Model {
     {
         $this->db->where('is_moderated',0);
         $this->db->limit(0,10);
+        $this->db->order_by("id", "desc");
         $query = $this->db->get($this->table);
         return $query->result_array();
     }
@@ -99,6 +100,13 @@ class Site extends CI_Model {
             redirect('/');
         }
     }
+
+    public function allow($id)
+    {
+        $this->db->where('id',$id);
+        $this->db->update($this->table,array('is_moderated' => 1));
+    }
+
     public function not_moderated()
     {
         $this->db->where('is_moderated',0);
