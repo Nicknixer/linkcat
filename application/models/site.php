@@ -130,4 +130,10 @@ class Site extends CI_Model {
         $query = $this->db->get($this->table);
         return $query->num_rows();
     }
+    public function amount_all_moderated()
+    {
+        $this->db->where('is_moderated',1);
+        $query = $this->db->get($this->table);
+        return $query->num_rows();
+    }
 }

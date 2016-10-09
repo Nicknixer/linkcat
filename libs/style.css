@@ -245,6 +245,9 @@ footer a{
 	font-family: Tahoma, sans-serif;
 	font-weight: Bold;
 }
+.left-side-menu a{
+	color: #FFFFFF;
+}
 
 .left-side-items {
 	margin: 0;

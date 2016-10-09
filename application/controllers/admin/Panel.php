@@ -11,15 +11,23 @@ class Panel extends CI_Controller {
             redirect('/admin/login');
         }
     }
+    private  function  show_header($title)
+    {
+        $this->load->model('category');
+        $categories = $this->category->get_all_cats();
+        $header_data = array('title' => $title,'new' => $this->site->not_moderated(),
+            'cats' => $categories);
+        $this->load->view('admin/header',$header_data);
+    }
     public function index()
     {
         $this->for_admin();
         //вьюшки
         $this->load->model('site');
-        $header_data = array('title' => 'Последние непроверенные','new' => $this->site->not_moderated());
-        $this->load->view('admin/header',$header_data);
+
 
         $data = array('sites' => $this->site->get_last_not_moderated_sites());
+        $this->show_header('Модерация');
         $this->load->view('admin/panel',$data);
         $this->load->view('footer');
     }
@@ -49,9 +57,8 @@ class Panel extends CI_Controller {
         $this->load->helper('security');
 
 
-        $header_data = array('title' => 'Изменение сайта','new' => $this->site->not_moderated());
-        $this->load->view('admin/header',$header_data);
 
+        $this->show_header('Изменение сайта');
 
 
 
