@@ -1,18 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?>
 
-<!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Вход в панель</title>
-</head>
-<body>
-<?php echo form_open('/admin/login'); ?>
+get_header();
+
+echo form_open('/admin/login');
+?>
 <table>
     <tr>
         <td><b>Логин:</b></td>
@@ -28,6 +20,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </td>
     </tr>
 </table>
-<?php echo form_close(); ?>
-</body>
-</html>
+<?php
+echo form_close();
+get_footer();

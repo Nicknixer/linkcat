@@ -23,6 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="content">
 	<div class="title-top"><h1><a href="/">Каталог сайтов</a> - <?php echo $title; ?></h1></div>
 		<?php
-		get_sidebar();
+		if($show_admin_side_bar) get_admin_sidebar();
+		if(!$show_admin_side_bar) get_sidebar();
 		?>
 	<div class="page">

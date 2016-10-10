@@ -13,36 +13,29 @@ class Login extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->helper('security');
 
+        $data = array('title' => 'Авторизация');
 
-        $categories = $this->category->get_all_cats();
-        $header_data = array('title' => 'Авторизация ',
-                            'cats' => $categories);
-        $this->load->view('header', $header_data);
-
-        // Auth
         $this->form_validation->set_rules('login', 'Логин', 'encode_php_tags|required|min_length[2]|max_length[60]|trim|xss_clean');
         $this->form_validation->set_rules('password', 'Пароль', 'required|encode_php_tags|trim|xss_clean|min_length[2]');
 
         if ($this->form_validation->run() == FALSE)
         {
-            $this->load->view('admin/login');
+            $this->load->view('admin/login',$data);
         }
         else
         {
             $this->load->model('admin');
             if($this->admin->login_admin($this->input->post('login'),$this->input->post('password')))
             {
-                redirect('/admin/panel');
+                redirect('/admin/panel'); //success auth
             }
             else
             {
-                $this->load->view('admin/login');
+                $this->load->view('admin/login',$data); //unsuccess
             }
         }
-        // End Auth
-        $this->load->view('footer');
-
     }
+
     function is_admin()
     {
         $this->load->model('admin');

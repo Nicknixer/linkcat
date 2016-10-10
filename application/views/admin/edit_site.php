@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?>
 
+get_header(true);
+?>
 <div class="site-block">
     <div class="title-site"><b>Изменение сайта</b></div>
     <?php echo form_open('/admin/panel/edit/'.$site['id']); ?>
@@ -51,3 +52,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <?php echo form_close(); ?>
 </div>
+<?php get_footer(); ?>
