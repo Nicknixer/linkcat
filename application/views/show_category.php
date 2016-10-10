@@ -1,7 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?>
-<?php foreach ($sites as $site) {
+
+get_header();
+
+foreach ($sites as $site)
+{
 			echo '
 				<div class="site-block">
 				<div class="title-site"><b>'.$site['title'].'</b></div>
@@ -11,4 +14,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<div class="info-site"><b>Описание:</b> '.$site['description'].'</div>
 				</div>
 			';
-} ?>
+}
+
+get_footer();

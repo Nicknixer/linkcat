@@ -22,12 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</nav>
 	<div class="content">
 	<div class="title-top"><h1><a href="/">Каталог сайтов</a> - <?php echo $title; ?></h1></div>
-	<div class="left-side-bar">
-		<div class="left-side-menu">Категории</div>
-		<?php foreach ($cats as $cat) {
-			echo '<div class="left-side-items"><a href="/cat/show/'.$cat['id'].'">'.$cat['name'].'</a> ('.$cat['count'].')</div>';
-		} ?>
-		<div class="left-side-menu">Статистика</div>
-		<div class="left-side-items"><span class="color-corn">Всего сайтов:</span> <?=$amount_sites;?></div>
-	</div>
+		<?php
+		get_sidebar();
+		?>
 	<div class="page">

@@ -5,15 +5,9 @@ class Yoursite extends CI_Controller {
     public function index()
     {
 
-
-
-
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
         $this->load->helper('security');
-
-        $header_data = array('title' => 'Добавление сайта', 'cats' => $this->category->get_all_cats());
-        $this->load->view('header', $header_data);
 
         $this->form_validation->set_rules('title', 'Название', 'encode_php_tags|required|min_length[12]|max_length[60]|trim|xss_clean');
         $this->form_validation->set_rules('url', 'Адрес', 'required|prep_url');
@@ -23,24 +17,18 @@ class Yoursite extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE)
         {
-            $this->load->view('add_site');
+            $data = array('title' => 'Добавление сайта', 'cats' => $this->category->get_all_cats());
+            $this->load->view('add_site',$data);
         }
         else
         {
-            $this->load->model('site');
             $site_id = $this->site->add(
                 $this->input->post('title'),
                 $this->input->post('url'),
                 $this->input->post('description'),
                 $this->input->post('category'));
-            $this->load->view('add_site_success',$this->site->get_site($site_id));
+            $data = array('title' => 'Успешное добавление сайта', 'site' => $this->site->get_site($site_id));
+            $this->load->view('add_site_success',$data);
         }
-
-
-
-
-
-        $this->load->view('footer');
     }
-
 }

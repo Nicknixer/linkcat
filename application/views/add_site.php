@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-
+<?php get_header(); ?>
 <div class="site-block">
     <div class="title-site"><b>Добавление сайта</b></div>
     <?php echo form_open('/add'); ?>
@@ -54,3 +54,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <?php echo form_close(); ?>
 </div>
+<?php get_footer(); ?>
