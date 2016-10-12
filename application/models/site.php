@@ -71,12 +71,15 @@ class Site extends CI_Model {
             return true;
         }
     }
-    public function add($title,$url,$description,$category_id)
+    public function add($title,$url,$email,$short_description,$description,$keywords,$category_id)
     {
         $data = array(
             'title' => $title,
             'url' => $url,
+            'email' => $email,
+            'short_description' => $short_description,
             'description' => $description,
+            'keywords' => $keywords,
             'category_id' => $category_id,
             'date' => date('Y-m-d'),
             'is_moderated' => 0,
@@ -86,12 +89,15 @@ class Site extends CI_Model {
         return $this->db->insert_id();
     }
 
-    public function edit($id,$title,$url,$description,$category_id)
+    public function edit($id,$title,$url,$email,$short_description,$description,$keywords,$category_id)
     {
         $data = array(
             'title' => $title,
             'url' => $url,
+            'email' => $email,
+            'short_description' => $short_description,
             'description' => $description,
+            'keywords' => $keywords,
             'category_id' => $category_id,
         );
         $this->db->where('id', $id);

@@ -82,7 +82,10 @@ class Panel extends CI_Controller {
                 $id,
                 $this->input->post('title'),
                 $this->input->post('url'),
+                $this->input->post('email'),
+                $this->input->post('short_description'),
                 $this->input->post('description'),
+                $this->input->post('keywords'),
                 $this->input->post('category'));
             $data = array(
                 'title' => 'Изменение сайта',
