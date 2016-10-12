@@ -54,3 +54,4 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['dobavit_site'] = 'yoursite';
 $route['reklama'] = 'main/reklama';
+$route['obratnaya_svyaz'] = 'main/feedback';

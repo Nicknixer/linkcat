@@ -16,6 +16,11 @@ class Main extends CI_Controller {
         $data = array('title' => 'Реклама в каталоге');
         $this->load->view('adv', $data);
     }
+    public function feedback()
+    {
+        $data = array('title' => 'Обратная связь');
+        $this->load->view('feedback', $data);
+    }
     public function pravila()
     {
         $data = array('title' => 'Правила белого каталога');
