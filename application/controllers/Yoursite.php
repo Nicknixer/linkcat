@@ -52,7 +52,11 @@ class Yoursite extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE)
         {
-            $data = array('title' => 'Добавление сайта', 'cats' => $this->category->get_all_cats());
+            $data = array(
+                'title' => 'Добавление сайта в белый каталог',
+                'cat_description' => 'Добавление сайта в белый каталог сайтов. Оставьте ссылку на сайт. Введите адрес, название и описание вашего сайта.',
+                'cat_keywords' => 'каталог,сайты,добавить,сайт,адрес,описание,ссылку',
+                'cats' => $this->category->get_all_cats());
             $this->load->view('add_site',$data);
         }
         else
