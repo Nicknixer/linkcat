@@ -43,3 +43,25 @@ if ( ! function_exists('get_footer'))
     }
 }
 
+if ( ! function_exists('get_description'))
+{
+    function get_description()
+    {
+        $CI =& get_instance();
+
+        if(isset($cat_description))
+            if($cat_description != '')
+                return $cat_description;
+        return "Desc";
+    }
+}
+if ( ! function_exists('get_keywords'))
+{
+    function get_keywords()
+    {
+        $CI =& get_instance();
+        return "key";
+    }
+}
+
+

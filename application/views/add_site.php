@@ -68,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </tr>
             <tr>
                 <td>
-                    <input type="checkbox" name="agree" value="accept" required/> Согласен с <a href="/rules">правилами</a> каталога.
+                    <input type="checkbox" name="agree" value="accept" required/> Согласен с <a href="/pravila" target="_blank">правилами</a> каталога.
                 </td>
                 <td>
                     <input type="submit" name="add" value="Добавить"/>
