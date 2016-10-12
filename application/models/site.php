@@ -8,6 +8,10 @@ class Site extends CI_Model {
     function __construct(){
         parent::__construct();
     }
+    function get_title_of_site($id)
+    {
+        return $this->get_site($id)['title'];
+    }
 
     function get_all_sites(){
         $query = $this->db->get($this->table);
