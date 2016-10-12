@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?php get_header(); ?>
 <div class="site-block">
     <div class="title-site"><b>Добавление сайта</b></div>
-    <?php echo form_open('/add'); ?>
+    <?php echo form_open('/dobavit_site'); ?>
     <div class="info-site">
         <?php echo validation_errors(); ?>
         <table>
