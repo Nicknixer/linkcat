@@ -22,11 +22,34 @@ class Category extends CI_Model {
         return $ret;
 
     }
+    function get_category($id)
+    {
+        $this->db->where('id',$id);
+        $query = $this->db->get($this->table);
+        $result = $query->result_array();
+        return $result[0];
+    }
     function get_name_of_category($id)
     {
     	$this->db->where('id',$id);
     	$query = $this->db->get($this->table);
         $result = $query->result_array();
         return $result[0]['name'];
+    }
+    function  add($name)
+    {
+        $data = array(
+            'name' => $name
+        );
+        $this->db->insert($this->table, $data);
+        return $this->db->insert_id();
+    }
+    public function edit($id,$name)
+    {
+        $data = array(
+            'name' => $name,
+        );
+        $this->db->where('id', $id);
+        $this->db->update($this->table,$data);
     }
 }

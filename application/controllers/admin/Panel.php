@@ -23,7 +23,77 @@ class Panel extends CI_Controller {
 
         $this->load->view('admin/panel',$data);
     }
+//////////////FOR CATEGORY MANIPULATIONS
 
+    public function edit_category($id = -1)
+    {
+        //////////////////////////////////////
+        // if $id = -1, then add new category//
+        //////////////////////////////////////
+        $this->for_admin();
+
+        $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
+        $this->load->helper('security');
+
+        $this->form_validation->set_rules(
+            'name',
+            'Название',
+            'encode_php_tags|required|trim|xss_clean'
+        );
+
+        if ($this->form_validation->run() == FALSE)
+        {
+            if($id != -1)
+            {
+                $data = array(
+                    'title' => 'Изменение категории',
+                    'cat' => $this->category->get_category($id)
+                );
+            }
+            else
+            {
+                $for_cat['name'] = '';
+                $for_cat['id'] = -1;
+                $data = array(
+                    'title' => 'Добавление категории',
+                    'cat' => $for_cat
+                );
+            }
+            $this->load->view('admin/edit_category', $data);
+        }
+        else
+        {
+            if($id != -1)
+            {
+                $this->category->edit(
+                    $id,
+                    $this->input->post('name')
+                );
+                $data = array(
+                    'title' => 'Изменение категории',
+                    'cat' => $this->category->get_category($id),
+                    'msg' => 'изменена'
+                );
+            }
+            else
+            {
+                $last_id = $this->category->add(
+                    $this->input->post('name')
+                );
+                $data = array(
+                    'title' => 'Добавление категории',
+                    'cat' => $this->category->get_category($last_id),
+                    'msg' => 'добавлена'
+                );
+            }
+
+            $this->load->view('admin/edit_category_success',$data);
+        }
+    }
+
+
+//////////////FOR SITE MANIPULATIONS
     public function allow($id)
     {
         $this->for_admin();
@@ -94,4 +164,5 @@ class Panel extends CI_Controller {
             $this->load->view('admin/edit_site_success',$data);
         }
     }
+    //////
 }
