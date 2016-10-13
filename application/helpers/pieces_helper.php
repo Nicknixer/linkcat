@@ -16,7 +16,10 @@ if ( ! function_exists('get_sidebar'))
     function get_sidebar()
     {
         $CI =& get_instance();
-        $data = array('cats' => $CI->category->get_all_cats());
+        $data = array(
+            'cats' => $CI->category->get_all_cats(),
+            'last_site' => $CI->site->get_last_site()
+        );
         $CI->load->view('left-side-bar',$data);
     }
 }
@@ -42,6 +45,3 @@ if ( ! function_exists('get_footer'))
         $CI->load->view('footer');
     }
 }
-
-
-

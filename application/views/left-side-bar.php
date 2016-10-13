@@ -5,6 +5,6 @@
     } ?>
     <div class="left-side-menu">Статистика каталога</div>
     <div class="left-side-items"><span class="color-corn">Добавлено сайтов:</span> <?=$this->site->amount_all_moderated();?></div>
-    <div class="left-side-items"><span class="color-corn">Комментариев: </div>
-    <div class="left-side-items"><span class="color-corn">Последний сайт: </div>
+    <div class="left-side-items"><span class="color-corn">Комментариев:</span> 0</div>
+    <div class="left-side-items"><span class="color-corn">Последний сайт:</span> <a style="text-decoration: underline;" href="http://jobeet/sites/show/<?php echo $last_site['id']; ?>"><?php echo $last_site['title']; ?></a></div>
 </div>
