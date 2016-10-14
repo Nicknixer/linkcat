@@ -2,13 +2,15 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Yoursite extends CI_Controller {
+
     public function index()
     {
 
-        $this->load->helper(array('form', 'url'));
+        $this->load->helper(array('form', 'url', 'security', 'captcha'));
         $this->load->library('form_validation');
-        $this->load->helper('security');
 
+
+        ///////////////// Rules of validation
         $this->form_validation->set_rules(
             'title',
             'Название',
@@ -49,6 +51,13 @@ class Yoursite extends CI_Controller {
             'Соглашение с правилами',
             'required'
         );
+        $this->form_validation->set_rules(
+            'captcha',
+            'Символы с картинки',
+            'required|callback_captcha_check'
+        );
+        $this->form_validation->set_message('captcha_check', 'Неправильно введены символы с картинки');
+        ///////////////// END Rules of validation
 
         if ($this->form_validation->run() == FALSE)
         {
@@ -56,7 +65,9 @@ class Yoursite extends CI_Controller {
                 'title' => 'Добавление сайта в белый каталог',
                 'cat_description' => 'Добавление сайта в белый каталог сайтов. Оставьте ссылку на сайт. Введите адрес, название и описание вашего сайта.',
                 'cat_keywords' => 'каталог,сайты,добавить,сайт,адрес,описание,ссылку',
-                'cats' => $this->category->get_all_cats());
+                'cats' => $this->category->get_all_cats(),
+                'captcha' => $this->gen_captcha() //generate captcha img-tag
+            );
             $this->load->view('add_site',$data);
         }
         else
@@ -73,5 +84,37 @@ class Yoursite extends CI_Controller {
             $data = array('title' => 'Успешное добавление сайта', 'site' => $this->site->get_site($site_id));
             $this->load->view('add_site_success',$data);
         }
+    }
+
+    public function captcha_check($str)
+    {
+        if ($str != $this->session->userdata('captcha'))
+        {
+            return FALSE;
+        }
+        else
+        {
+            return TRUE;
+        }
+    }
+    private function gen_captcha()
+    {
+        $rand_for_captcha = rand(1000, 9999); // создаем произвольную строку из семи цифр
+        $data = array(
+            'captcha' => $rand_for_captcha
+        );
+        $this->session->set_userdata($data);
+
+        $data_for_captcha = array(
+            'word' => $rand_for_captcha, // фраза, которая будет показана на капче
+            'img_path' => './img/captcha/', // папка, куда будет сохраняться капча
+            'img_url' => base_url().'img/captcha/', // ссылка к картинке с капчей
+            'img_width' => 180, // ширина капчи
+            'img_height' => 50, // высота капчи
+            'expiration' => 10 // время хранения картинки капчи в папке
+        );
+
+        $cap = create_captcha($data_for_captcha); // вызываем функцию создания капчи
+        return $cap['image'];
     }
 }

@@ -68,6 +68,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </tr>
             <tr>
                 <td>
+                    <b>Введите символы с картинки:</b>
+                </td>
+                <td><?php echo $captcha; ?>
+                    <input type="text" name="captcha" size="25" value="" placeholder="Введите символы с картинки" required/>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <input type="checkbox" name="agree" value="accept" required/> Согласен с <a href="/pravila" target="_blank">правилами</a> каталога.
                 </td>
                 <td>
