@@ -25,6 +25,13 @@ class Panel extends CI_Controller {
     }
 //////////////FOR CATEGORY MANIPULATIONS
 
+    public function delete_category($id)
+    {
+        $this->for_admin();
+        $this->category->delete($id);
+        redirect('/admin/panel');
+    }
+
     public function edit_category($id = -1)
     {
         //////////////////////////////////////

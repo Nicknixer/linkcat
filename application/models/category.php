@@ -52,4 +52,9 @@ class Category extends CI_Model {
         $this->db->where('id', $id);
         $this->db->update($this->table,$data);
     }
+    public function delete($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete($this->table);
+    }
 }

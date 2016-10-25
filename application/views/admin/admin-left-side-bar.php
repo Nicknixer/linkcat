@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php
     foreach ($cats as $cat)
     {
-        echo '<div class="left-side-items"><a href="/cat/show/'.$cat['id'].'">'.$cat['name'].'</a> ('.$cat['count'].') (<a href="/admin/panel/delete_category/'.$cat['id'].'">Уд</a>|<a href="/admin/panel/edit_category/'.$cat['id'].'">Изм</a>)</div>';
+        echo '<div class="left-side-items"><a href="/cat/show/'.$cat['id'].'">'.$cat['name'].'</a> ('.$cat['count'].') (<a href="/admin/panel/delete_category/'.$cat['id'].'" onclick ="return confirm(\'Удалить категорию '.$cat['name'].'?\');">Уд</a>|<a href="/admin/panel/edit_category/'.$cat['id'].'">Изм</a>)</div>';
     }
     ?>
 </div>
